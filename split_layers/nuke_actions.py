@@ -41,7 +41,7 @@ def split_explicit(node, layers, alpha, unpremult_all, merge_all, postage_stamp,
     current_node = nuke.nodes.Shuffle2(xpos=prev_node.xpos() - x_shift, ypos=prev_node.ypos() + 75)
     current_node.connectInput(0, prev_node)
     current_node.knob('in1').setValue(layers[0])
-    current_node.knob('label').setValue('[value in]')
+    current_node.knob('label').setValue('[value in1]')
     current_node.knob('postage_stamp').setValue(postage_stamp)
     prev_node = current_node
 
