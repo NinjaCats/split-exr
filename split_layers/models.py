@@ -1,4 +1,7 @@
-from PySide2 import QtCore
+try:
+    from PySide6 import QtCore
+except ImportError as e:
+    from PySide2 import QtCore
 
 
 class LayersListModel(QtCore.QAbstractListModel):

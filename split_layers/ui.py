@@ -1,6 +1,9 @@
-from PySide2 import QtCore
-from PySide2 import QtWidgets
-
+try:
+    from PySide6 import QtCore
+    from PySide6 import QtWidgets
+except ImportError as e:
+    from PySide2 import QtCore
+    from PySide2 import QtWidgets
 
 class SplitLayersUI(QtWidgets.QWidget):
     def __init__(self):

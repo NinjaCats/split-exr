@@ -1,12 +1,15 @@
 from os import pipe
 import nuke
-from PySide2 import QtCore
-from PySide2 import QtGui
 from models import LayersListModel
 from ui import SplitLayersUI
 import nuke_actions
 
-
+try:
+    from PySide6 import QtCore
+    from PySide6 import QtGui
+except ImportError as e:
+    from PySide2 import QtCore
+    from PySide2 import QtGui
 
 def main():
     node = None
