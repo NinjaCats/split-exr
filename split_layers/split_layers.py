@@ -57,7 +57,13 @@ class SplitLayers(SplitLayersUI):
         self.alpha_combobox.addItems(self.channels)
         i = self.alpha_combobox.findText('rgba.alpha')
         self.alpha_combobox.setCurrentIndex(i)
-        self.filter_lineedit.textChanged.connect(self.proxyModel.setFilterRegExp)
+        
+        try:
+            self.filter_lineedit.textChanged.connect(self.proxyModel.setFilterRole)
+        except AttributeError as e:
+            # Compatibility with different PySide versions
+            self.filter_lineedit.textChanged.connect(self.proxyModel.setFilterRegExp)
+    
 
         self.split_pushbutton.clicked.connect(lambda: self.split(self.method_combobox.currentText()))
         self.cancel_pushbutton.clicked.connect(self.close)

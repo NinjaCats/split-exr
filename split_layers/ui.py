@@ -38,15 +38,23 @@ class SplitLayersUI(QtWidgets.QWidget):
         self.input_listview.setDragEnabled(True)
         self.input_listview.setAcceptDrops(True)
         self.input_listview.setDropIndicatorShown(True)
-        self.input_listview.setSelectionMode(self.input_listview.ExtendedSelection)
-
+        try:
+            self.input_listview.setSelectionMode(self.input_listview.SelectionMode.ExtendedSelection)
+        except AssertionError as e:
+            # PySide2 does not support SelectionMode.ExtendedSelection
+            self.input_listview.setSelectionMode(self.input_listview.ExtendedSelection)
+            
         split_label = QtWidgets.QLabel('For split:')
         self.split_listview = QtWidgets.QListView()
         self.split_listview.setAlternatingRowColors(True)
         self.split_listview.setDragEnabled(True)
         self.split_listview.setAcceptDrops(True)
         self.split_listview.setDropIndicatorShown(True)
-        self.split_listview.setSelectionMode(self.split_listview.ExtendedSelection)
+        try:
+            self.input_listview.setSelectionMode(self.input_listview.SelectionMode.ExtendedSelection)
+        except AssertionError as e:
+            # PySide2 does not support SelectionMode.ExtendedSelection
+            self.input_listview.setSelectionMode(self.input_listview.ExtendedSelection)
 
         self.filter_lineedit = QtWidgets.QLineEdit()
         self.filter_lineedit.setPlaceholderText("Filter Layers")
